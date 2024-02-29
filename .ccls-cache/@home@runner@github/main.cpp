@@ -1,28 +1,27 @@
 #include <iostream>
-#include <array>
-#include <cmath>
-#include <iomanip>
+
+int gcd(int a, int b) {
+    if (b == 0) {
+        return a;
+    } else {
+        return gcd(b, a % b);
+    }
+}
 
 int main() {
-    int N;
-    std::cout << "Введіть кількість елементів послідовності: ";
-    std::cin >> N;
+    int num1, num2;
 
-    std::array<float, 100> x;
-    float M = 0;
-    std::array<float, 100> S = {0};
+    std::cout << "Enter the first number: ";
+    std::cin >> num1;
 
-    std::cout << "Введіть " << N << " дійсних чисел:\n";
-    for (int i = 0; i < N; ++i) {
-        std::cin >> x[i];
-        M += x[i];
-    }
-    M /= N;
+    std::cout << "Enter the second number: ";
+    std::cin >> num2;
 
-    for (int i = 0; i < N; ++i) {
-        S[i] = std::sqrt(std::pow(x[i] - M, 2) / (N - 1));
-        std::cout << "S_" << i << " = " << std::fixed << std::setprecision(2) << S[i] << std::endl;
-    }
+    int result = gcd(num1, num2);
+
+    std::cout << "GCD of " << num1 << " and " << num2 << " is: " << result << std::endl;
 
     return 0;
 }
+
+
